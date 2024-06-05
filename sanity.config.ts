@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'richTextConfigurableTest',
 
-  projectId: '75cpoyet',
+  projectId: '0sfcquom',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
