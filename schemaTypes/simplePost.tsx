@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity'
-import {defineRichTextCustomOptions} from './richTextCustom'
 
 export default defineType({
   name: 'simplePost',
@@ -10,7 +9,7 @@ export default defineType({
       name: 'content',
       title: 'Content',
       type: 'richTextCustom',
-      options: defineRichTextCustomOptions({
+      options: {
         // Core of this PoC, setting these options enables/disables features within this custom rich text data type
         marks: false,
         styles: true,
@@ -18,7 +17,7 @@ export default defineType({
         simpleVideo: false,
         iconGrid: false,
         linkGeneric: false,
-      })
-    })
-  ]
+      },
+    }),
+  ],
 })

@@ -1,4 +1,5 @@
 import {
+  BaseSchemaDefinition,
   BlockMarksDefinition,
   BlockOptions,
   BlockStyleDefinition,
@@ -23,6 +24,21 @@ const DEFAULT_RICH_TEXT_CUSTOM_OPTIONS: RichTextCustomOptions = {
   simpleVideo: true,
   spellCheck: true,
   linkGeneric: true,
+}
+
+interface RichTextCustomDefinition extends BaseSchemaDefinition {
+  type: 'richTextCustom'
+  options?: RichTextCustomOptions
+}
+
+interface RichTextCustomIntrinsicDefinitions {
+  richTextCustom: RichTextCustomDefinition
+}
+
+// Extend 'sanity' module types with Rich Text Custom type.
+// This will provide typecheck/autocomplete with `defineField` for example
+declare module 'sanity' {
+  interface IntrinsicDefinitions extends RichTextCustomIntrinsicDefinitions {}
 }
 
 const STYLES: BlockStyleDefinition[] = [
@@ -75,9 +91,6 @@ const MARKS: BlockMarksDefinition = {
   ],
 }
 
-export const defineRichTextCustomOptions: (
-  options: Partial<RichTextCustomOptions>,
-) => Partial<RichTextCustomOptions> = (options) => options
 const richTextCustom = defineType({
   name: 'richTextCustom',
   title: 'Custom Rich Text',
